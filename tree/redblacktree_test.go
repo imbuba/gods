@@ -4,9 +4,6 @@ import (
 	"errors"
 	"math/rand"
 	"testing"
-
-	"github.com/imbuba/utils/data"
-	"github.com/imbuba/utils/data/structures/tree"
 )
 
 const size = 100_000
@@ -254,12 +251,5 @@ func BenchmarkPut(b *testing.B) {
 	tr := NewRedBlackTree[int, int]()
 	for i := 0; i < b.N; i++ {
 		tr.Put(keys[i%size], values[i%size])
-	}
-}
-
-func BenchmarkPutOld(b *testing.B) {
-	tr := tree.NewRedBlackTree()
-	for i := 0; i < b.N; i++ {
-		tr.Put(data.Int(keys[i%size]), values[i%size])
 	}
 }
